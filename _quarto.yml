@@ -1,0 +1,43 @@
+project:
+  type: website
+
+website:
+  title: "Mark Druffel"
+  description: "Data scientist, askew of central tendencies"
+  site-url: https://www.mark-druffel.com
+  favicon: images/initials.ico
+  open-graph: true
+  twitter-card: 
+    creator: "@MarkDruffel"
+  navbar:
+    title: false
+    left:
+      - text: "About Me"
+        file: about.qmd
+      - text: "Blog"
+        file: blog.qmd
+      - text: "Resume"
+        file: resume.html
+    right:
+      - icon: github
+        href: https://github.com/mark-druffel
+      - icon: linkedin
+        href: https://linkedin.com/in/markdruffel
+      - icon: twitter
+        href: https://twitter.com/MarkDruffel
+      - icon: instagram
+        href: https://www.instagram.com/markdruffel/
+      - icon: rss
+        href: index.xml
+      - icon: envelope 
+        href: mailto:mark.druffel@gmail.com?subject=mark-druffel.com
+
+format:
+  html:
+    theme: 
+      light: [flatly, css/theme.scss]
+      dark: [darkly, css/theme.scss, css/darkly.scss]
+    
+
+
+
