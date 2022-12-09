@@ -1,0 +1,41 @@
+/*-- scss:defaults --*/
+// use flatly as the base
+$theme: "flatly" !default;
+
+// fonts
+// header
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// body
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+// code
+@import url('https://fonts.googleapis.com/css2?\family=Fira+Mono:wght@400;500&display=swap');
+// misc
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+$bs-font-sans-serif:  "Overpass";
+$bs-body-font-family:  "Quicksand";
+$bs-code-font-family:  "Fira Mono" !default;
+
+
+/*-- scss:rules --*/
+h1, h2, h3, h4 {
+  font-family: $bs-font-sans-serif;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+h4 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+body {
+  font-family: $bs-body-font-family;
+}
