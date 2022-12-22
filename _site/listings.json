@@ -1,20 +1,9 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
-    ]
-  },
-  {
     "listing": "/blog.html",
     "items": [
       "/posts/2020-10-26-great-american-beer-festival/index.html",
       "/posts/2019-12-21-hello-world/index.html"
     ]
-  },
-  {
-    "listing": "/pages/blog.html",
-    "items": []
   }
 ]

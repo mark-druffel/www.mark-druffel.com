@@ -10,12 +10,12 @@ about:
 ---
 
 ### Hi There!
-I'm a data scientist, I `mutate` :coffee: + :beer: into `r fontawesome::fa("r-project", fill = "steelblue")` code. 
+I'm a data scientist, I `mutate` :coffee: + :beer: into `r fontawesome::fa("r-project", fill = "steelblue")` code.\
 
 ### Motivation   
-Like many data scientists, I started without formal training so I spent a lot of time learning. I set up this blog as a tool to share some of the things I've learned and connect with others.
+Data science and technology are constantly evolving and keeping up can be difficult. I set up this blog as a tool to share some of the things I've learned with others and for my own posterity. R is my favorite data science language so most of my posts are written in R, but I also use Python, ,SQL, and others regularly so I try to share content regarding those as well.\
 
 ### A bit about me   
-Currently, I am a lead data scientist at [84.51°](https://www.8451.com/). I live in Portland, OR with my amazing wife Brittany and our two kids. When I'm not working with data, I love to cook, hike, rock-climb, play video games, travel, and explore the Pacific-Northwest.
+Currently, I am a lead data scientist at [84.51°](https://www.8451.com/). I live in Portland, OR with my amazing wife Brittany and our two kids. When I'm not working with data, I love to cook, hike, rock-climb, play video games, travel, and explore the Pacific-Northwest.\
 
-If you ever have questions about a post or want to connect, please don't hesitate to reach out!\
+If you ever have questions about a post or want to connect, please don't hesitate to reach out!

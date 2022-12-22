@@ -1,0 +1,14 @@
+{
+  "hash": "68749e7623651bbead614c8765dca126",
+  "result": {
+    "markdown": "---\ntitle: Hello World\nauthor: Mark Druffel\ndate: '2019-12-21'\nslug: hello-world\ncategories: []\ntags: []\noutput:\n  blogdown::html_page:\n    toc: false\n---\n\n\n## Hello World  \nAt this year's RStudio Conf [David Robinson](http://varianceexplained.org/) discussed the importance of sharing work publicly in his talk [\"The unreasonable effectiveness of public work.\"](https://resources.rstudio.com/rstudio-conf-2019/the-unreasonable-effectiveness-of-public-work). He attributed much of his own personal, professional success to the habit of sharing his work and encouraged others to adopt the habit. I recommend the talk to anyone, data scientist or not. Anyhow, I have procrastinated writing a blog for long enough. I attended the [Advanced RMarkdown Workshop](https://arm.rbind.io/)  at the conference and learned, among other things, the blogdown [blogdown](https://github.com/rstudio/blogdown) package so here's to getting started :beers: \n\n## Blogdown Starter Kit\nThe aforementioned [Advanced RMarkdown Workshop](https://arm.rbind.io/) is a great resource and per usual RStudio was kind enough to open source it. A few additional resource I used to get this site open and running were:\n\n* [Rbind Github Repo](https://github.com/rbind)\n* [Up & Running with blogdown](https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/)\n* [Making a Website Using Blogdown, Hugo, and GitHub Pages](https://amber.rbind.io/2016/12/19/website/)\n* [Rstudio Conf: Making Websites in R Markdown](https://arm.rbind.io/slides/blogdown.html#1)\n* [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/)\n* Setting up your blog with RStudio and blogdown:\n    + [Part I: Creating the blog](http://estebanmoro.org/post/2019-02-02-setting-up-your-blog-with-rstudio-and-blogdown-i-creating-the-blog/)\n    + [Part II: Workflow](http://estebanmoro.org/post/2019-02-01-setting-up-your-blog-with-rstudio-and-blogdown/)\n    + [Part III: Modify Your Theme](http://estebanmoro.org/post/2019-02-04-setting-up-your-blog-with-rstudio-and-blogdown-iii-modify-your-theme/)\n* [Markdown Basics](https://rmarkdown.rstudio.com/authoring_basics.html)\n* [R Markdown the Definitive Guide](https://bookdown.org/yihui/rmarkdown/)\n* [Hugo Emojify Cheatsheet](https://www.webfx.com/tools/emoji-cheat-sheet/)\n\nAll the above resources should have anyone well informed on blogdown, but for posterity I recommend following [Alison Hill's blog](https://alison.rbind.io) as there are sure to be updates and she is an amazing resource. Happy blogging! \n\n<p align=\"center\">\n![](https://media.giphy.com/media/lCbSAbRrFEfkY/giphy.gif){width=500px}\n</p>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
