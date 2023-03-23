@@ -4,6 +4,9 @@ subtitle: "Tidy Tuesday analysis of the Great American Beer Festival winners fro
 author: "Mark Druffel"
 date: "2020-10-26"
 categories: ["tidy-tuesday"]
+keywords: []
+link-external-newwindow: true
+link-external-icon: true
 code-fold: true
 code-overflow: scroll
 code-line-numbers: true

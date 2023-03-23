@@ -4,6 +4,9 @@ subtitle: "Tidy Tuesday analysis of European energy production from 2016 to 2018
 author: "Mark Druffel"
 date: "2021-08-13"
 categories: ["tidy-tuesday"]
+keywords: ["ggplot2","ggiraph","ggflags","flextable","sf","rnaturalearth","leaflet"]
+link-external-newwindow: true
+link-external-icon: true
 code-fold: true
 code-overflow: scroll
 code-line-numbers: true

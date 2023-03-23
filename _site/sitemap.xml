@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.mark-druffel.com/posts/2020-10-26-great-american-beer-festival/index.html</loc>
-    <lastmod>2023-02-17T21:14:44.817Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/about.html</loc>
-    <lastmod>2023-03-17T20:56:23.926Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.mark-druffel.com/blog.html</loc>
-    <lastmod>2023-03-17T21:04:44.179Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/posts/2019-12-21-hello-world/index.html</loc>
-    <lastmod>2022-12-23T17:47:48.642Z</lastmod>
+    <lastmod>2023-03-22T00:27:38.777Z</lastmod>
   </url>
   <url>
     <loc>https://www.mark-druffel.com/posts/2021-05-04-french-trains/index.html</loc>
-    <lastmod>2023-03-14T23:08:16.401Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/home.html</loc>
-    <lastmod>2023-03-14T00:10:55.529Z</lastmod>
+    <lastmod>2023-03-22T00:16:32.701Z</lastmod>
   </url>
   <url>
     <loc>https://www.mark-druffel.com/posts/2021-08-13-european-energy/index.html</loc>
-    <lastmod>2023-03-17T20:56:32.030Z</lastmod>
+    <lastmod>2023-03-22T00:16:36.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/posts/2020-10-26-great-american-beer-festival/index.html</loc>
+    <lastmod>2023-03-22T00:16:40.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/posts/2019-12-21-hello-world/index.html</loc>
+    <lastmod>2023-03-22T00:16:41.936Z</lastmod>
   </url>
   <url>
     <loc>https://www.mark-druffel.com/posts/2022-01-05-building-blogdown-site/index.html</loc>
-    <lastmod>2023-03-17T21:04:43.559Z</lastmod>
+    <lastmod>2023-03-22T00:27:37.724Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/about.html</loc>
+    <lastmod>2023-03-22T00:17:01.724Z</lastmod>
   </url>
 </urlset>

@@ -3,7 +3,10 @@ title: "Building a blogdown site"
 subtitle: "Build a blogdown site from scratch with code-folding, a custom footer, & other hugo theme hacks"
 author: "Mark Druffel"
 date: "2022-01-05"
-categories: ["walkthrough"]
+categories: ["walkthrough"] 
+keywords: []
+link-external-newwindow: true
+link-external-icon: true
 code-fold: true
 code-overflow: scroll
 code-line-numbers: true
@@ -52,9 +55,7 @@ Again, I recommend [w3school's CSS tutorial](https://www.w3schools.com/Css/) to 
 ## Browser Developer Tools
 The [browser web developer tools](https://en.wikipedia.org/wiki/Web_development_tools) that come in your standard issue web browser are critical to working on web development. The most commonly used tool within the set is the element inspector which usually is represented by a little square with an arrow in the corner. This video shows a few ways you can use the element inspector.\
 
-```{r, echo=F}
-blogdown::shortcode("youtube", "vi1mUy-nXFo")
-```
+{{< video https://www.youtube.com/embed/vi1mUy-nXFo >}}
 
 Using the element inspector allows you to find code related to an element so you can understand the code and make changes. We can try it on David Robinson's [website](http://varianceexplained.org/) by  [opening web developer tools](https://www.lifewire.com/how-to-clear-cache-2617980), selecting the image of David, and changing the image link to another image on the web.\
 
@@ -540,14 +541,19 @@ This is a blog I have created to share analytics with my team members. Although 
 ```
 
 Hugo has a [shortcode](https://gohugo.io/content-management/shortcodes/) feature that allows users to pull in content from a number of platforms. The `blogdown::shortcode()` function is a wrapper to use it. It can be used to embed tweets, figures, youtube videos, gists, etc.\
-```{r, echo = T, eval = T}
+
+```{r, echo = T, eval = F}
 blogdown::shortcode("youtube", "2xkNJL4gJ9E")
 ```
+{{< video https://www.youtube.com/embed/2xkNJL4gJ9E >}}
 
 It can also be used for syntax highlighting languages which may not be supported by knitr.\
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = F}
 blogdown::shortcode("highlight", "bash", .content = "echo Thanks for visiting our new site!;")
 ```
+`bash echo "Thanks for visiting our new site!"`
+
+
 
 You might be thinking, shortcode doesn't support GIFs!?!@ Agreed, but don't worrying GIFs are simple to add without using shortcode. They are an image and therefore work exactly like image files do. Add, `![<my alt text>](<link to giph>){<add CSS properties}`, to a new line in your document - **not in a code block**. In the CSS properties you can add anything you want, but I typically use it to specify width like `{width=500px}`. If you want to center the image, one simple way is to just wrap the line in `<center> </center>` tags. You can save the giph in a folder in the post folder, or just link to a direct url. Giphy provides *GIF Links* if you hit the share button. 
 
@@ -773,7 +779,7 @@ And voila, you have code folding!\
 <center>
 ![](https://media.giphy.com/media/1BFEEIo4h1BuTH8eqP/giphy.gif){width=400px}
 </center>
-
+\
 Pages with code should now have a button beside the code which will expand and collapse the code.\
 
 <center>
@@ -907,5 +913,4 @@ I get the impression that Netlify is the most popular place to host a blogdown. 
 Github pages seems to be a close second in popularity from what I've seen. It's even simpler than netlify, but you cannot use a [custom domain without a premium account](https://docs.github.com/en/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site). Again, I'm going to outsource the guide on this approach because it's so simple and already well documented in the [blogdown book](https://bookdown.org/yihui/blogdown/github-pages.html).\
 
 ## Deploy Internally w/ Docker\  
-As I mentioned, I host my personal site on Netlify - it's been very cheap and easy to use. However, I want to publish an internal blog at work that needs to be secured. Netlify requires an enterprise account to use oauth, and their [new pricing model](https://answers.netlify.com/t/pricing-change-questions-what-are-team-members/) would be cost prohibitive for a small startup. Further, because we work with health data we use a service called [Aptible](https://www.aptible.com/) that makes HIPPA compliance and auditing much simpler. Given that, I need to host my blogdown site in a Docker container. Given the length of this post and the specialized circumstances of wanting to host a blogdown site on Docker, I decided to leave that for a separate post which I'll link to here when it's up. 
-Footer
+As I mentioned, I host my personal site on Netlify - it's been very cheap and easy to use. However, I want to publish an internal blog at work that needs to be secured. Netlify requires an enterprise account to use oauth, and their [new pricing model](https://answers.netlify.com/t/pricing-change-questions-what-are-team-members/) would be cost prohibitive for a small startup. Further, because we work with health data we use a service called [Aptible](https://www.aptible.com/) that makes HIPPA compliance and auditing much simpler. Given that, I need to host my blogdown site in a Docker container. Given the length of this post I'm going ot save that for another later post (if / when time allows).

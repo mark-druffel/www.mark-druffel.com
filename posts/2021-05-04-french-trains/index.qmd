@@ -4,6 +4,9 @@ subtitle: "Tidy Tuesday analysis of the TGV high-speed rail service from 2015 to
 author: "Mark Druffel"
 date: "2021-05-04"
 categories: ["tidy-tuesday"]
+keywords: []
+link-external-newwindow: true
+link-external-icon: true
 code-fold: true
 code-overflow: scroll
 code-line-numbers: true
@@ -52,6 +55,7 @@ library(knitr)
 library(htmltools)
 library(markUtils)
 library(tidyverse)
+library(scales)
 library(janitor)
 library(patchwork)
 library(tidymodels)
@@ -299,8 +303,8 @@ We can use many (not all) tidyverse functions with a `tbl_graph` by activating t
 With dplyr verbs, we can calculate attributes on our nodes & edges to add to our visuals.  
 ```{r, fig.height = 10}
 l <- network_df %N>%
-  mutate(outlier = if_else(scale((late_arrivals + late_departures) / (arrivals + departures)) <= -1.5 | scale((late_arrivals + late_departures) / (arrivals + departures)) >= 1.5, T, F)) |> 
-  mutate(node_label = if_else(outlier, glue::glue("{station}:\n{scales::label_percent(accuracy = .1)((late_arrivals + late_departures) / (arrivals + departures))}"), NA_character_)) |> 
+  mutate(outlier = abs(scale(late_arrivals + late_departures) / scale(arrivals + departures)) >= 1.5) |> 
+  mutate(node_label = ifelse(outlier, glue::glue("{station}:\n{scales::label_percent(accuracy = .1)((late_arrivals + late_departures) / (arrivals + departures))}"), NA_character_)) |> 
   ggraph(layout = 'stress') + 
   geom_edge_link(width = .15) + 
   geom_node_point(aes(size = arrivals + departures, color = (late_arrivals + late_departures) / (arrivals + departures)))  +
@@ -311,11 +315,11 @@ l <- network_df %N>%
   theme_blog_network(legend.position = "bottom")
 duration_outliers <- network_df %E>%
   mutate(journey_time_z = scale(journey_time_weighted_avg)) |> 
-  mutate(outlier = if_else(scale(journey_time_weighted_avg) <= -2 | scale(journey_time_weighted_avg) >= 2, T, F)) |> 
+  mutate(outlier = abs(scale(journey_time_weighted_avg)) >= 2) |> 
   filter(outlier == T)
 duration_outliers <- unique(c(duration_outliers |> pull(from), duration_outliers |> pull(to)))
 d <- network_df %E>%
-  mutate(outlier = if_else(scale(journey_time_weighted_avg) <= -2 | scale(journey_time_weighted_avg) >= 2, T, F)) %N>%
+  mutate(outlier = abs(scale(journey_time_weighted_avg)) >= 2) %N>%
   mutate(node_label = if_else(id %in% duration_outliers, station, NA_character_)) |> 
   ggraph(layout = 'stress') + 
   geom_edge_link(aes(edge_width = journey_time_weighted_avg, color = outlier), alpha = .5) + 
