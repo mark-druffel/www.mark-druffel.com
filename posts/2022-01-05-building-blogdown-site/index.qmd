@@ -5,6 +5,7 @@ author: "Mark Druffel"
 date: "2022-01-05"
 categories: ["walkthrough"] 
 keywords: []
+image: images/blogdown_plus_hugo.png 
 link-external-newwindow: true
 link-external-icon: true
 code-fold: true
@@ -21,7 +22,7 @@ execute:
 
 
 # Background
-I've created a few different versions of my blog using blogdown. Creating new blog with blogdown is so simple, but customizing can be finicky. Now blogdown 1.0, but was still sitting in a stack of posts that never made their way to the web when I started writing this :flushed: Now a year later I'm hoping to use blogdown internally at my new job to disseminate analysis more easily and I could really use that post as a guide :scream: So, for posterity I'm going to document the process as I go through it. If you'd like to learn how to create blogdown site or learn how to customize on your existing blogdown site, read on.\
+I've created a few different versions of my blog using blogdown. Creating new blog with blogdown is so simple, but customizing can be finicky. I started a guide when I upgrade my site to blogdown 1.0, but was still sitting in a stack of posts that never made their way to the web when I started writing this :flushed: Now a year later I'm hoping to use blogdown internally at my new job to disseminate analysis more easily and I could really use that post as a guide :scream: So, for posterity I'm going to document the process as I go through it. If you'd like to learn how to create blogdown site or learn how to customize on your existing blogdown site, read on.\
 
 ## What is blogdown?  
 [blogdown](https://pkgs.rstudio.com/blogdown/) is an R package witten by [Yihui Xie](https://en.wikipedia.org/wiki/Yihui_Xie)  that wraps the [Hugo web development framework](https://gohugo.io/). Blogdown provides a tool for R developers to build their own blogs and portfolio sites from Hugo templates. There are several other R libraries to consider for publishing including [distill](https://pkgs.rstudio.com/blogdown/), [bookdown](https://pkgs.rstudio.com/bookdown/), and [hugodown](https://hugodown.r-lib.org/). We'll cover blogdown only in this post.

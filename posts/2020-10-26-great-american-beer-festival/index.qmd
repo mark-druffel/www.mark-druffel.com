@@ -5,6 +5,7 @@ author: "Mark Druffel"
 date: "2020-10-26"
 categories: ["tidy-tuesday"]
 keywords: []
+image: images/map_gif.gif
 link-external-newwindow: true
 link-external-icon: true
 code-fold: true
@@ -119,11 +120,11 @@ tr:hover {
 
 ## Background
 ### Tidy Tuesday
-I give the same boiler plate on every Tidy Tuesday, post so skip ahead if you have read any. [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) is a weekly social data project in the R for Data Science community where R users explore a new dataset and share their findings. If you're an R user (or aspiring) I highly recommend participating. A few specific Tidy Tuesday resources I'd recommend are [David Robinson's Tidy Tuesday screen casts](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ), [Twitter #TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typeahead_click), and the [TidyTuesday podcast](https://www.tidytuesday.com/) with Jon Harmon. All Tidy Tuesday datasets are available on [Github](https://github.com/rfordatascience/tidytuesday). 
+This is my first published of hopefully many [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) analysis posts. Tidy Tuesday  is a weekly social data project in the R for Data Science community where R users explore a new dataset and share their findings. If you're an R user (or aspiring) I highly recommend participating. A few specific Tidy Tuesday resources I'd recommend are [David Robinson's Tidy Tuesday screen casts](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ), [Twitter #TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typeahead_click), and the [TidyTuesday podcast](https://www.tidytuesday.com/) with Jon Harmon. All Tidy Tuesday datasets are available on [Github](https://github.com/rfordatascience/tidytuesday). 
 
 
 ### The Great American Beer Festival
-In this installation, we're analyzing data from The Great American Beer Festival. The [Great American Beer Festival](https://en.wikipedia.org/wiki/Great_American_Beer_Festival) (GABF) is a three-day annual festival in Denver, Colorado. Judges evaluate several thousand beers entered by hundreds of breweries and award gold, silver, and bronze medals in 100+ categories - though not every medal is necessarily awarded in each category. GABF was founded in 1982 and had 22 participating breweries in the first year. To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package.
+This Tidy Tuesday, we're analyzing data from The Great American Beer Festival. The [Great American Beer Festival](https://en.wikipedia.org/wiki/Great_American_Beer_Festival) (GABF) is a three-day annual festival in Denver, Colorado. Judges evaluate several thousand beers entered by hundreds of breweries and award gold, silver, and bronze medals in 100+ categories - though not every medal is necessarily awarded in each category. GABF was founded in 1982 and had 22 participating breweries in the first year. To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package.
 
 ```{r setup, include=F, message=F, warning=F, echo=T}
 knitr::opts_chunk$set(echo = T, message = F, warning = F, error = F, fig.width = 9)

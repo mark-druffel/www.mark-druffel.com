@@ -5,6 +5,7 @@ author: "Mark Druffel"
 date: "2021-08-13"
 categories: ["tidy-tuesday"]
 keywords: ["ggplot2","ggiraph","ggflags","flextable","sf","rnaturalearth","leaflet"]
+image: images/radial_lollipop.png
 link-external-newwindow: true
 link-external-icon: true
 code-fold: true
@@ -20,11 +21,8 @@ execute:
 --- 
 
 ## Background
-### Tidy Tuesday
-I give the same boiler plate on every Tidy Tuesday, post so skip ahead if you have read any. [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) is a weekly social data project in the R for Data Science community where R users explore a new dataset and share their findings. If you're an R user (or aspiring) I highly recommend participating. A few specific Tidy Tuesday resources I'd recommend are [David Robinson's Tidy Tuesday screen casts](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ) and [Twitter #TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typeahead_click). All Tidy Tuesday datasets are available on [Github](https://github.com/rfordatascience/tidytuesday). 
-
 ### European energy data Data
-In this installation, I'm analyzing European energy data. To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package.
+This [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday), I'm analyzing European energy data. I don't know much about the data set, but it seems like it contains European energy production data. To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package.
 ```{r get_gh_data, cache=T, include = F}
 tt <- tidytuesdayR::tt_load("2020-08-04")  
 ```

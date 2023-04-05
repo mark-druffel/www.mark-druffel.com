@@ -5,6 +5,8 @@ author: "Mark Druffel"
 date: '2019-12-21'
 categories: []
 keywords: []
+image: images/hello_world.gif
+image-height: ""
 link-external-newwindow: true
 link-external-icon: true
 execute:
@@ -14,6 +16,7 @@ execute:
   error: false
   freeze: auto
 --- 
+
 
 ## Hello World  
 At this year's RStudio Conf [David Robinson](http://varianceexplained.org/) discussed the importance of sharing work publicly in his talk ["The unreasonable effectiveness of public work."](https://resources.rstudio.com/rstudio-conf-2019/the-unreasonable-effectiveness-of-public-work). He attributed much of his own personal, professional success to the habit of sharing his work and encouraged others to adopt the habit. I recommend the talk to anyone, data scientist or not. Anyhow, I have procrastinated writing a blog for long enough. I attended the [Advanced RMarkdown Workshop](https://arm.rbind.io/)  at the conference and learned, among other things, the blogdown [blogdown](https://github.com/rstudio/blogdown) package so here's to getting started :beers: 

@@ -6,12 +6,22 @@ website:
   description: "Data scientist, askew of central tendencies"
   site-url: https://www.mark-druffel.com
   favicon: images/initials.ico
+  google-analytics:
+    tracking-id: "G-3EP6HMMGRW"
+    version: 4
+    anonymize-ip: true
+    storage: cookies
+  cookie-consent: 
+    type: implied
+    style: headline
+    palette: dark
   open-graph: true
   twitter-card: 
     creator: "@MarkDruffel"
   navbar:
     title: false
     search: true
+    collapse-below: sm
     left:
       - text: "Blog"
         file: blog.qmd
@@ -32,10 +42,6 @@ website:
         href: https://www.instagram.com/markdruffel/
       - icon: envelope 
         href: mailto:mark.druffel@gmail.com?subject=mark-druffel.com
-  comments:
-      giscus:
-        repo: mark-druffel/www.mark-druffel.com
-        category: "Announcements"
 
 format:
   html:

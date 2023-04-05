@@ -4,7 +4,8 @@ subtitle: "Tidy Tuesday analysis of the TGV high-speed rail service from 2015 to
 author: "Mark Druffel"
 date: "2021-05-04"
 categories: ["tidy-tuesday"]
-keywords: []
+keywords: ["ggforce", "ggplot2", "ggraph", "tidygrph", "sf", "leaflet", "sfnetworks", "tweenr", "wikifacts", "osmdata", "maps", "network"]
+image: images/train_net.png
 link-external-newwindow: true
 link-external-icon: true
 code-fold: true
@@ -44,11 +45,8 @@ tr:hover {
 ```
 
 ## Background
-### Tidy Tuesday
-I give the same boiler plate on every Tidy Tuesday, post so skip ahead if you have read any. [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) is a weekly social data project in the R for Data Science community where R users explore a new dataset and share their findings. If you're an R user (or aspiring) I highly recommend participating. A few specific Tidy Tuesday resources I'd recommend are [David Robinson's Tidy Tuesday screen casts](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ) and [Twitter #TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typeahead_click). All Tidy Tuesday datasets are available on [Github](https://github.com/rfordatascience/tidytuesday). 
-
 ### French Trains Data
-In this installation, I'm analyzing french trains data from [TGV](https://en.wikipedia.org/wiki/TGV), France's inter-city high-speed rail service. This is an older Tidy Tuesday data set, but it looks like a fun one and I've been wanting to spend some time learning a few networking packages. The TGV has been in operation since the 80's and mostly goes throughout France, although a few legs are international. The TGV has data services that provide information about past train service with some documentation [here](https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/information/). To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package.
+This [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday), I'm analyzing french trains data from [TGV](https://en.wikipedia.org/wiki/TGV), France's inter-city high-speed rail service. This is an older Tidy Tuesday data set, but it looks like a fun one and I've been wanting to spend some time learning a few networking packages. The TGV has been in operation since the 80's and mostly goes throughout France, although a few legs are international. The TGV has data services that provide information about past train service with some documentation [here](https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/information/). To download the data I use the [tidytuesdayR](https://github.com/rfordatascience/tidytuesday) package. 
 ```{r setup}
 knitr::opts_chunk$set(fig.width = 9)
 library(knitr)
