@@ -1,0 +1,16 @@
+.reactable-tbl-view {
+  /* Center the table */
+  margin: 0 auto;
+  /* Reduce the table width */
+
+  font-size: 9px;
+  font-family: Karla, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.div-subtitle {
+  margin: 8px 0;
+  font-size: 14px;
+}
+.div-title {
+  font-size: 20px;
+  font-weight: 600;
+}
