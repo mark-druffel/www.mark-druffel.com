@@ -1,2 +1,11 @@
 /*-- scss:defaults --*/
 $navbar-bg: #303030;
+
+.cell-output.cell-output-stdout {
+  background-color: #E1D9D1;
+}
+
+pre>code {
+    display: block;
+    background-color: #E1D9D1;
+}

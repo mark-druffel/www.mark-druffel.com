@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.mark-druffel.com/about.html</loc>
+    <lastmod>2023-04-24T21:10:09.336Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.mark-druffel.com/blog.html</loc>
-    <lastmod>2023-04-05T00:29:51.834Z</lastmod>
+    <lastmod>2023-08-10T05:38:18.349Z</lastmod>
   </url>
   <url>
     <loc>https://www.mark-druffel.com/posts/2021-05-04-french-trains/index.html</loc>
-    <lastmod>2023-04-05T00:29:56.334Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/posts/2021-08-13-european-energy/index.html</loc>
-    <lastmod>2023-04-05T00:30:00.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/posts/2020-10-26-great-american-beer-festival/index.html</loc>
-    <lastmod>2023-04-05T00:30:04.094Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.mark-druffel.com/posts/2019-12-21-hello-world/index.html</loc>
-    <lastmod>2023-04-05T00:30:05.326Z</lastmod>
+    <lastmod>2023-04-24T20:57:51.139Z</lastmod>
   </url>
   <url>
     <loc>https://www.mark-druffel.com/posts/2022-01-05-building-blogdown-site/index.html</loc>
-    <lastmod>2023-04-05T00:30:10.526Z</lastmod>
+    <lastmod>2023-04-24T20:57:58.235Z</lastmod>
   </url>
   <url>
-    <loc>https://www.mark-druffel.com/about.html</loc>
-    <lastmod>2023-04-05T00:30:12.022Z</lastmod>
+    <loc>https://www.mark-druffel.com/posts/2023-04-05-web-scraping/index.html</loc>
+    <lastmod>2023-08-10T05:38:17.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/posts/2021-08-13-european-energy/index.html</loc>
+    <lastmod>2023-04-24T20:58:06.482Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/posts/2020-10-26-great-american-beer-festival/index.html</loc>
+    <lastmod>2023-04-24T20:58:10.894Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mark-druffel.com/posts/2019-12-21-hello-world/index.html</loc>
+    <lastmod>2023-04-24T20:58:12.078Z</lastmod>
   </url>
 </urlset>

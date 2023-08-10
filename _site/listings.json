@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2023-04-05-web-scraping/index.html",
       "/posts/2022-01-05-building-blogdown-site/index.html",
       "/posts/2021-08-13-european-energy/index.html",
       "/posts/2021-05-04-french-trains/index.html",

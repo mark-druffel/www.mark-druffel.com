@@ -45,6 +45,7 @@ website:
 
 format:
   html:
+    anchor-sections: true 
     theme: 
       light: [flatly, css/theme.scss]
       dark: [darkly, css/theme.scss, css/darkly.scss]

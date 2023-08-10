@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -184,60 +155,60 @@ cookieconsent.run({
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-sm navbar-dark ">
       <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html">
+    <a class="nav-link" href="../../resume.html" rel="" target="">
  <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mark-druffel"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mark-druffel" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/markdruffel"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/markdruffel" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://stackoverflow.com/users/6213809/mark-druffel"><i class="bi bi-stack-overflow" role="img">
+    <a class="nav-link" href="https://stackoverflow.com/users/6213809/mark-druffel" rel="" target=""><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/MarkDruffel"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/MarkDruffel" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/markdruffel/"><i class="bi bi-instagram" role="img">
+    <a class="nav-link" href="https://www.instagram.com/markdruffel/" rel="" target=""><i class="bi bi-instagram" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:mark.druffel@gmail.com?subject=mark-druffel.com"><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:mark.druffel@gmail.com?subject=mark-druffel.com" rel="" target=""><i class="bi bi-envelope" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -277,96 +248,10 @@ cookieconsent.run({
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
-  <ul class="collapse">
-  <li><a href="#what-is-blogdown" id="toc-what-is-blogdown" class="nav-link" data-scroll-target="#what-is-blogdown">What is blogdown?</a>
-  <ul class="collapse">
-  <li><a href="#learning-blogdown" id="toc-learning-blogdown" class="nav-link" data-scroll-target="#learning-blogdown">Learning blogdown</a></li>
-  </ul></li>
-  <li><a href="#what-is-hugo" id="toc-what-is-hugo" class="nav-link" data-scroll-target="#what-is-hugo">What is Hugo?</a>
-  <ul class="collapse">
-  <li><a href="#learning-hugo" id="toc-learning-hugo" class="nav-link" data-scroll-target="#learning-hugo">Learning Hugo</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a>
-  <ul class="collapse">
-  <li><a href="#html-hypertext-markup-language" id="toc-html-hypertext-markup-language" class="nav-link" data-scroll-target="#html-hypertext-markup-language">HTML (HyperText Markup Language)</a></li>
-  <li><a href="#css-cascading-style-sheets" id="toc-css-cascading-style-sheets" class="nav-link" data-scroll-target="#css-cascading-style-sheets">CSS (Cascading Style Sheets)</a></li>
-  <li><a href="#browser-developer-tools" id="toc-browser-developer-tools" class="nav-link" data-scroll-target="#browser-developer-tools">Browser Developer Tools</a></li>
-  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing&nbsp;</a></li>
-  <li><a href="#hugo-basics" id="toc-hugo-basics" class="nav-link" data-scroll-target="#hugo-basics">Hugo Basics<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes<br>
-  </a></li>
-  <li><a href="#config-file" id="toc-config-file" class="nav-link" data-scroll-target="#config-file">Config file<br>
-  </a></li>
-  <li><a href="#static-files" id="toc-static-files" class="nav-link" data-scroll-target="#static-files">Static Files<br>
-  </a></li>
-  <li><a href="#content" id="toc-content" class="nav-link" data-scroll-target="#content">Content<br>
-  </a></li>
-  <li><a href="#templating" id="toc-templating" class="nav-link" data-scroll-target="#templating">Templating<br>
-  </a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#build-a-site-from-scratch" id="toc-build-a-site-from-scratch" class="nav-link" data-scroll-target="#build-a-site-from-scratch">Build a site from scratch<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#project-setup" id="toc-project-setup" class="nav-link" data-scroll-target="#project-setup">Project setup<br>
-  </a></li>
-  <li><a href="#customize-navbar" id="toc-customize-navbar" class="nav-link" data-scroll-target="#customize-navbar">Customize Navbar<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#page-links" id="toc-page-links" class="nav-link" data-scroll-target="#page-links">Page Links<br>
-  </a></li>
-  <li><a href="#home-button" id="toc-home-button" class="nav-link" data-scroll-target="#home-button">Home Button<br>
-  </a></li>
-  <li><a href="#background-color" id="toc-background-color" class="nav-link" data-scroll-target="#background-color">Background Color</a></li>
-  <li><a href="#fonts" id="toc-fonts" class="nav-link" data-scroll-target="#fonts">Fonts</a></li>
-  </ul></li>
-  <li><a href="#content-1" id="toc-content-1" class="nav-link" data-scroll-target="#content-1">Content<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#new-posts" id="toc-new-posts" class="nav-link" data-scroll-target="#new-posts">New Posts</a></li>
-  <li><a href="#permalinks" id="toc-permalinks" class="nav-link" data-scroll-target="#permalinks">Permalinks<br>
-  </a></li>
-  <li><a href="#styles" id="toc-styles" class="nav-link" data-scroll-target="#styles">Styles<br>
-  </a></li>
-  <li><a href="#style-vector-graphics" id="toc-style-vector-graphics" class="nav-link" data-scroll-target="#style-vector-graphics">Style Vector Graphics<br>
-  </a></li>
-  <li><a href="#add-multimedia" id="toc-add-multimedia" class="nav-link" data-scroll-target="#add-multimedia">Add Multimedia<br>
-  </a></li>
-  <li><a href="#markdown-formatting" id="toc-markdown-formatting" class="nav-link" data-scroll-target="#markdown-formatting">Markdown Formatting</a></li>
-  </ul></li>
-  <li><a href="#other-styling-components" id="toc-other-styling-components" class="nav-link" data-scroll-target="#other-styling-components">Other Styling &amp; Components<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#browser-tab-title-image" id="toc-browser-tab-title-image" class="nav-link" data-scroll-target="#browser-tab-title-image">Browser Tab Title &amp; Image<br>
-  </a></li>
-  <li><a href="#code-folding" id="toc-code-folding" class="nav-link" data-scroll-target="#code-folding">Code Folding<br>
-  </a></li>
-  <li><a href="#add-links-to-footer" id="toc-add-links-to-footer" class="nav-link" data-scroll-target="#add-links-to-footer">Add Links to Footer</a></li>
-  <li><a href="#misc-configs" id="toc-misc-configs" class="nav-link" data-scroll-target="#misc-configs">Misc Configs<br>
-  </a></li>
-  </ul></li>
-  <li><a href="#deploy-w-hosting-service" id="toc-deploy-w-hosting-service" class="nav-link" data-scroll-target="#deploy-w-hosting-service">Deploy w/ Hosting Service<br>
-  </a>
-  <ul class="collapse">
-  <li><a href="#netlify" id="toc-netlify" class="nav-link" data-scroll-target="#netlify">Netlify<br>
-  </a></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages">Github Pages<br>
-  </a></li>
-  </ul></li>
-  <li><a href="#deploy-internally-w-docker" id="toc-deploy-internally-w-docker" class="nav-link" data-scroll-target="#deploy-internally-w-docker">Deploy Internally w/ Docker&nbsp;</a></li>
-  </ul></li>
-  </ul>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    
 </nav>
-</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -425,7 +310,7 @@ I’ll cover some of the basics in the next section, but I’ll barely scratch t
 <h2 class="anchored" data-anchor-id="browser-developer-tools">Browser Developer Tools</h2>
 <p>The <a href="https://en.wikipedia.org/wiki/Web_development_tools">browser web developer tools</a> that come in your standard issue web browser are critical to working on web development. The most commonly used tool within the set is the element inspector which usually is represented by a little square with an arrow in the corner. This video shows a few ways you can use the element inspector.<br>
 </p>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/vi1mUy-nXFo" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/vi1mUy-nXFo" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Using the element inspector allows you to find code related to an element so you can understand the code and make changes. We can try it on David Robinson’s <a href="http://varianceexplained.org/">website</a> by <a href="https://www.lifewire.com/how-to-clear-cache-2617980">opening web developer tools</a>, selecting the image of David, and changing the image link to another image on the web.<br>
 </p>
 <center>
@@ -652,7 +537,7 @@ I’ll cover some of the basics in the next section, but I’ll barely scratch t
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource css number-lines code-with-copy"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">@font-face</span> {</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">font-family</span>: <span class="st">'Rubik'</span><span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="kw">src</span>: <span class="fu">url(</span><span class="st">'../fonts/Rubik-VariableFont_wght.woff2'</span><span class="fu">)</span> <span class="fu">format(</span><span class="st">'woff2 supports variations'</span><span class="fu">)</span><span class="op">,</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>    src: <span class="fu">url(</span><span class="st">'../fonts/Rubik-VariableFont_wght.woff2'</span><span class="fu">)</span> <span class="fu">format(</span><span class="st">'woff2 supports variations'</span><span class="fu">)</span><span class="op">,</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>       <span class="fu">url(</span><span class="st">'../fonts/Rubik-VariableFont_wght.woff2'</span><span class="fu">)</span> <span class="fu">format(</span><span class="st">'woff2-variations'</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a>    <span class="kw">font-weight</span>: <span class="dv">100</span> <span class="dv">900</span><span class="op">;</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a>    <span class="kw">font-stretch</span>: <span class="dv">25</span><span class="dt">%</span> <span class="dv">151</span><span class="dt">%</span><span class="op">;</span></span>
@@ -1026,7 +911,7 @@ I’ll cover some of the basics in the next section, but I’ll barely scratch t
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>blogdown<span class="sc">::</span><span class="fu">shortcode</span>(<span class="st">"youtube"</span>, <span class="st">"2xkNJL4gJ9E"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/2xkNJL4gJ9E" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/2xkNJL4gJ9E" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>It can also be used for syntax highlighting languages which may not be supported by knitr.<br>
 </p>
 <div class="cell">
@@ -1576,9 +1461,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1694,6 +1593,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1732,12 +1717,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/www\.mark-druffel\.com/);
+      var filterRegex = new RegExp("https:\/\/www\.mark-druffel\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -2672,7 +2657,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

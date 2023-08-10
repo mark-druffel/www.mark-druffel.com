@@ -39,3 +39,8 @@ h4 {
 body {
   font-family: $bs-body-font-family;
 }
+
+pre>code {
+    display: block;
+    background-color: #ecf0f1;
+}
