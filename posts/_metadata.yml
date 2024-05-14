@@ -7,8 +7,9 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 toc-location: left
+
 comments:
-      giscus:
-        repo: mark-druffel/www.mark-druffel.com
-        category: Blog
-        loading: lazy 
+  giscus:
+    repo: mark-druffel/www.mark-druffel.com
+    category: Blog
+    loading: lazy
