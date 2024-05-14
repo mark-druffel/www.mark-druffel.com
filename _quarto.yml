@@ -53,5 +53,4 @@ format:
 comments:
   giscus:
     repo: mark-druffel/www.mark-druffel.com
-    category: Blog
     loading: lazy
