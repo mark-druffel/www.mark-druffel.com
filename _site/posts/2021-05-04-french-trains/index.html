@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.319">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,8 +10,11 @@
 <meta name="dcterms.date" content="2021-05-04">
 <meta name="keywords" content="ggforce, ggplot2, ggraph, tidygrph, sf, leaflet, sfnetworks, tweenr, wikifacts, osmdata, maps, network">
 
-<title>Mark Druffel - French Train Delays</title>
+<title>French Train Delays – Mark Druffel</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,6 +27,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -70,24 +74,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../images/initials.ico" rel="icon">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-26f66e08569639144c4c2be4bb34e049.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6398c698fb3dc4a27cfab5cc66ba8c53.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-26f66e08569639144c4c2be4bb34e049.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,8 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3EP6HMMGRW"></script>
@@ -121,6 +136,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -136,13 +153,13 @@ cookieconsent.run({
 <script src="../../site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
 
 
-<meta property="og:title" content="Mark Druffel - French Train Delays">
+<meta property="og:title" content="French Train Delays – Mark Druffel">
 <meta property="og:description" content="Tidy Tuesday analysis of the TGV high-speed rail service from 2015 to 2018.">
 <meta property="og:image" content="https://www.mark-druffel.com/posts/2021-05-04-french-trains/images/train_net.png">
-<meta property="og:site-name" content="Mark Druffel">
+<meta property="og:site_name" content="Mark Druffel">
 <meta property="og:image:height" content="777">
 <meta property="og:image:width" content="1631">
-<meta name="twitter:title" content="Mark Druffel - French Train Delays">
+<meta name="twitter:title" content="French Train Delays – Mark Druffel">
 <meta name="twitter:description" content="Tidy Tuesday analysis of the TGV high-speed rail service from 2015 to 2018.">
 <meta name="twitter:image" content="https://www.mark-druffel.com/posts/2021-05-04-french-trains/images/train_net.png">
 <meta name="twitter:creator" content="@MarkDruffel">
@@ -151,67 +168,229 @@ cookieconsent.run({
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-sm navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html" rel="" target="">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../resume.pdf"> 
+<span class="menu-text">Resume</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mark-druffel" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mark-druffel"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/markdruffel" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/markdruffel"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://stackoverflow.com/users/6213809/mark-druffel" rel="" target=""><i class="bi bi-stack-overflow" role="img">
+    <a class="nav-link" href="https://stackoverflow.com/users/6213809/mark-druffel"> <i class="bi bi-stack-overflow" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/MarkDruffel" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/MarkDruffel"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/markdruffel/" rel="" target=""><i class="bi bi-instagram" role="img">
+    <a class="nav-link" href="https://www.instagram.com/markdruffel/"> <i class="bi bi-instagram" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:mark.druffel@gmail.com?subject=mark-druffel.com" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:mark.druffel@gmail.com?subject=mark-druffel.com"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -247,15 +426,22 @@ cookieconsent.run({
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>ggforce, ggplot2, ggraph, tidygrph, sf, leaflet, sfnetworks, tweenr, wikifacts, osmdata, maps, network</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -263,8 +449,9 @@ cookieconsent.run({
 
 
 
-<div class="cell">
 
+
+<div class="cell">
 <style type="text/css">
 /* kableExtra tables & skimr */
 table {
@@ -295,9 +482,9 @@ tr:hover {
 <h3 class="anchored" data-anchor-id="french-trains-data">French Trains Data</h3>
 <p>This <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday</a>, I’m analyzing french trains data from <a href="https://en.wikipedia.org/wiki/TGV">TGV</a>, France’s inter-city high-speed rail service. This is an older Tidy Tuesday data set, but it looks like a fun one and I’ve been wanting to spend some time learning a few networking packages. The TGV has been in operation since the 80’s and mostly goes throughout France, although a few legs are international. The TGV has data services that provide information about past train service with some documentation <a href="https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/information/">here</a>. To download the data I use the <a href="https://github.com/rfordatascience/tidytuesday">tidytuesdayR</a> package.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.width =</span> <span class="dv">9</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.width =</span> <span class="dv">9</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(htmltools)</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(markUtils)</span>
@@ -321,7 +508,7 @@ tr:hover {
 <span id="cb1-22"><a href="#cb1-22"></a><span class="fu">library</span>(measurements)</span>
 <span id="cb1-23"><a href="#cb1-23"></a><span class="fu">library</span>(osmdata)</span>
 <span id="cb1-24"><a href="#cb1-24"></a>full_trains <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2019-02-26'</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fu">pluck</span>(<span class="st">'full_trains'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fu">pluck</span>(<span class="st">'full_trains'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -336,12 +523,12 @@ tr:hover {
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <p>We can summarize the data set with <a href="https://docs.ropensci.org/skimr/">skimr</a>, which provides a high-level understanding of the data. This data set has ~5.4k observations and 27 attributes. Most of the data is numeric and a number of columns start with <code>num_</code> and <code>avg_</code> which indicates that the data is aggregated. Most of the attributes have records for all observations (<code>n_missing</code>). The <code>num_</code> fields are all counts so those should never be missing, meaning we can replace missing records with zero. The service attribute is missing 1.4k observations, but it’s a category of either national or international - should be easy to impute based on the <code>departure_station</code> and <code>arrival_station</code>. The 6 numeric attributes with names that start with <code>delay_cause_</code> are all missing 3 percent of the observations. Rows missing <code>delay_cause_</code> appear to be legs that had no delays. The <code>comment_delays_on_arrival</code> attribute is a comments field so it’s reasonable to have so many missing.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(full_trains)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(full_trains)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
@@ -387,7 +574,7 @@ tr:hover {
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 11%">
@@ -454,7 +641,7 @@ tr:hover {
 </tbody>
 </table>
 <p><strong>Variable type: logical</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">skim_variable</th>
@@ -482,7 +669,7 @@ tr:hover {
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 27%">
 <col style="width: 8%">
@@ -791,9 +978,9 @@ tr:hover {
 </div>
 <p>Based on the summary table, we can create a date field (year + month), format station names from all upper to normal sentence, create a leg attribute (departure station + arrival station), and impute the appropriate missing values.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Add date, get rid of all caps for stations, create leg column, fill in missing service records</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Add date, get rid of all caps for stations, create leg column, fill in missing service records</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>service <span class="ot">&lt;-</span> full_trains <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">select</span>(service, arrival_station, departure_station) <span class="sc">|&gt;</span> </span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span> </span>
@@ -819,14 +1006,14 @@ tr:hover {
 <span id="cb4-24"><a href="#cb4-24"></a>              <span class="fu">str_detect</span>(leg, <span class="st">"Geneve"</span>) <span class="sc">~</span> <span class="st">"Internationl"</span>,</span>
 <span id="cb4-25"><a href="#cb4-25"></a>              T <span class="sc">~</span> <span class="st">"National"</span>),</span>
 <span id="cb4-26"><a href="#cb4-26"></a>    service)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">select</span>(service, leg, date, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">select</span>(service, leg, date, <span class="fu">everything</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Total trips and late arrivals appear to have a linear relationship, which makes sense. There is an upward trend and significantly more variability from month to month than I would have expected. It appears there may have been a strike sometime in May or July of 2016 and it looks like there may be seasonality in the number of trips.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>trips <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>trips <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarise</span>(<span class="at">trips =</span> <span class="fu">sum</span>(total_num_trips)) <span class="sc">|&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
@@ -850,17 +1037,21 @@ tr:hover {
 <span id="cb5-22"><a href="#cb5-22"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">title =</span> <span class="st">"Late Arrivals"</span>, <span class="at">subtitle =</span> <span class="st">"Late arrivals increased with service"</span>) <span class="sc">+</span></span>
 <span id="cb5-23"><a href="#cb5-23"></a>  <span class="fu">theme_blog</span>() </span>
 <span id="cb5-24"><a href="#cb5-24"></a><span class="co"># Put plots side by side with patchwork https://github.com/thomasp85/patchwork</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a>trips <span class="sc">+</span> late_arrivals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-25"><a href="#cb5-25"></a>trips <span class="sc">+</span> late_arrivals</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/trips_by_date-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/trips_by_date-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To get a better look of each leg we can plot the trips &amp; late arrival data on heatmaps. Since the number of trips is not evenly distributed across the legs, it’s helpful to scale the data. We can use a log scale for the number of trips, but we can use a percentage for late arrivals since that’s easier to understand. A few legs had the majority of all trips (bright yellow) and a few of the legs didn’t start operating until January of 2018 (white). A legs had months where 40+ percent of all trips arrived late (e.g.&nbsp;June / July of 2018).</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>service <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>service <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">group_by</span>(departure_station, year, date) <span class="sc">|&gt;</span> </span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">summarise</span>(<span class="at">trips =</span> <span class="fu">sum</span>(total_num_trips, <span class="at">na.rm =</span> F), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">arrange</span>(departure_station) <span class="sc">|&gt;</span></span>
@@ -909,10 +1100,14 @@ tr:hover {
 <span id="cb6-47"><a href="#cb6-47"></a>                   <span class="at">legend.justification=</span><span class="st">"center"</span>,</span>
 <span id="cb6-48"><a href="#cb6-48"></a>                   <span class="at">legend.direction=</span><span class="st">"horizontal"</span>,</span>
 <span id="cb6-49"><a href="#cb6-49"></a>                   <span class="at">legend.key.width=</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">'cm'</span>))</span>
-<span id="cb6-50"><a href="#cb6-50"></a>service <span class="sc">+</span> late</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-50"><a href="#cb6-50"></a>service <span class="sc">+</span> late</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/heatmaps-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/heatmaps-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="networking" class="level3">
@@ -923,9 +1118,9 @@ tr:hover {
 </center>
 <p>The short of it, tidygraph allows us to perform network analysis in data frames so we still take advantage of our the tidy workflow even though <a href="https://en.wikipedia.org/wiki/Graph_theory">graph objects</a> aren’t rectangular in nature. To create a graph object, we have to create a nodes list (points in the network) and an edges list (connections between nodes). We can store our nodes list as a data frame with a record for each node in the network, in this case train stations, and any attributes related to the nodes. We can store our edges list as a data frame with a record for each connection in the network, in this case legs, and any attributes related to the edges. All graph objects are either directed or un-directed - this graph is un-directed because the trains go in both directions so the edges do not represent a direction. Once we have a node list and edge list, we can transform the data frames into a <code>tbl_graph</code>.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>routes_df <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>routes_df <span class="ot">&lt;-</span> trains <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">total_journies_time =</span> total_num_trips <span class="sc">*</span> journey_time_avg) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(departure_station, arrival_station, leg, service) <span class="sc">|&gt;</span> </span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">summarise</span>(</span>
@@ -962,7 +1157,7 @@ tr:hover {
 <span id="cb7-35"><a href="#cb7-35"></a>  <span class="fu">left_join</span>(stations_df <span class="sc">|&gt;</span> <span class="fu">select</span>(id, station), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"to"</span> <span class="ot">=</span> <span class="st">"station"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb7-36"><a href="#cb7-36"></a>  <span class="fu">mutate</span>(<span class="at">to =</span> id) <span class="sc">|&gt;</span> </span>
 <span id="cb7-37"><a href="#cb7-37"></a>  <span class="fu">select</span>(<span class="sc">-</span>id)</span>
-<span id="cb7-38"><a href="#cb7-38"></a>network_df <span class="ot">&lt;-</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> stations_df, <span class="at">edges =</span> routes_df, <span class="at">directed =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-38"><a href="#cb7-38"></a>network_df <span class="ot">&lt;-</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> stations_df, <span class="at">edges =</span> routes_df, <span class="at">directed =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <center>
@@ -970,16 +1165,20 @@ tr:hover {
 </center>
 <p>With the <code>tbl_graph</code>, we can take advantage of ggraph to visualize our data. There is an <code>autograph()</code> function to quickly visualize your network automagically, but I’ll spell it out as well with <code>ggraph()</code>. Layout determines the position of the nodes and edges (more on that in a minute), we can start with <code>layout='auto'</code>. Then we use the typical ggplot flow but there are new geoms to pay attention to, primarily <code>geom_node_point()</code> and <code>geom_edge_link()</code>, these are very basic geoms to visualize the nodes and edges of the graph. Visualizing the data as a network has immediate benefits, this visual shows there are several major hubs that most legs connect through which wasn’t clearly discernible from our other plots.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">autograph</span>(network_df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">autograph</span>(network_df) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
 </div>
-<details>
+</div>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>auto <span class="ot">&lt;-</span> <span class="fu">autograph</span>(network_df) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">"Autograph"</span>) <span class="sc">+</span> <span class="fu">theme_blog_network</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>auto <span class="ot">&lt;-</span> <span class="fu">autograph</span>(network_df) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">"Autograph"</span>) <span class="sc">+</span> <span class="fu">theme_blog_network</span>()</span>
 <span id="cb9-2"><a href="#cb9-2"></a>verbose <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">'auto'</span>) <span class="sc">+</span> </span>
 <span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">geom_edge_link</span>(<span class="at">width =</span> .<span class="dv">15</span>) <span class="sc">+</span> </span>
@@ -987,17 +1186,21 @@ tr:hover {
 <span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">scale_size</span>(<span class="at">rang =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Verbose"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>, <span class="at">size =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">theme_blog_network</span>()</span>
-<span id="cb9-9"><a href="#cb9-9"></a>auto <span class="sc">+</span> verbose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9"></a>auto <span class="sc">+</span> verbose</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Regarding layout, ggraph provides a number of layouts from igraph <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and graphlayouts <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, with option to create your own. The ggraph function defaults to <code>layout='auto'</code>, which seems to do a pretty good job selecting a layout in my novice experience, but it’s recommended that a layout is intentionally chosen for the graph. All the layout choices can be overwhelming, but it’s pretty easy to visually narrow down choices and then do a bit of research to understand the differences between those options. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Many of the algorithms are non-deterministic meaning you’ll get different results when re-running, which makes selecting the best layout all the more challenging. I saw a cool <a href="https://www.data-imaginist.com/2017/ggraph-introduction-layouts/">example</a> by Thomas Lin Pederson where he showed the different layouts in a neat animation using <a href="https://github.com/thomasp85/tweenr">tweenr</a>. I tried that here, more for fun, to see the different layouts and mess with tweenr. I decided to go with <code>layout='stress'</code> because it seemed to produce the least overlap for both nodes and edges making it the easiest to read - funnily enough the same layout <code>layout='auto'</code> chose :joy:</p>
 <div class="cell" data-ffmpeg.format="gif" data-animation.hook="gifski">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>layout_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'star'</span>, <span class="st">'circle'</span>, <span class="st">'gem'</span>, <span class="st">'dh'</span>, <span class="st">'graphopt'</span>, <span class="st">'grid'</span>, <span class="st">'mds'</span>, <span class="st">'randomly'</span>, <span class="st">'fr'</span>, <span class="st">'kk'</span>, <span class="st">'drl'</span>, <span class="st">'lgl'</span>, <span class="st">'stress'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>layout_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'star'</span>, <span class="st">'circle'</span>, <span class="st">'gem'</span>, <span class="st">'dh'</span>, <span class="st">'graphopt'</span>, <span class="st">'grid'</span>, <span class="st">'mds'</span>, <span class="st">'randomly'</span>, <span class="st">'fr'</span>, <span class="st">'kk'</span>, <span class="st">'drl'</span>, <span class="st">'lgl'</span>, <span class="st">'stress'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>layouts <span class="ot">&lt;-</span> <span class="fu">map</span>(layout_names, <span class="cf">function</span>(x){</span>
 <span id="cb10-3"><a href="#cb10-3"></a>  layout <span class="ot">&lt;-</span> <span class="fu">create_layout</span>(x, <span class="at">graph =</span> network_df) <span class="sc">|&gt;</span> <span class="fu">select</span>(x, y, circular) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">layout_name =</span> <span class="sc">!!</span>x)</span>
 <span id="cb10-4"><a href="#cb10-4"></a>})</span>
@@ -1020,10 +1223,14 @@ tr:hover {
 <span id="cb10-21"><a href="#cb10-21"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="fu">alpha</span>(<span class="st">'black'</span>, title_alpha)))</span>
 <span id="cb10-22"><a href="#cb10-22"></a>  <span class="fu">return</span>(p)</span>
 <span id="cb10-23"><a href="#cb10-23"></a>})</span>
-<span id="cb10-24"><a href="#cb10-24"></a><span class="fu">walk</span>(plots, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-24"><a href="#cb10-24"></a><span class="fu">walk</span>(plots, print)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/network_layouts_gif-.gif" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/network_layouts_gif-.gif" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by activating the nodes or edges and using the verb of choice (e.g.&nbsp;<code>mutate()</code>, <code>filter()</code>, <code>morph()</code> etc.). The <code>activate()</code> function can be called directly or as pipeline operators <code>%N&gt;%</code> and <code>%E&gt;%</code>, which active nodes and edge respectively. I ran into some challenges in this post that I won’t spell out for brevity, but know functions like <code>pivot_longer()</code> and <code>unnest()</code> aren’t available with <code>tbl_graph</code> objects. I ended up writing a lot of clumsy code with <code>pull()</code>. There may be better approaches, but I wasn’t finding much on Stackoverflow or Github. I’ll post some questions later and link them in here if I can get some answers.<br>
@@ -1033,9 +1240,9 @@ We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by a
 </center>
 <p>With dplyr verbs, we can calculate attributes on our nodes &amp; edges to add to our visuals.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>l <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>l <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="at">outlier =</span> <span class="fu">abs</span>(<span class="fu">scale</span>(late_arrivals <span class="sc">+</span> late_departures) <span class="sc">/</span> <span class="fu">scale</span>(arrivals <span class="sc">+</span> departures)) <span class="sc">&gt;=</span> <span class="fl">1.5</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">mutate</span>(<span class="at">node_label =</span> <span class="fu">ifelse</span>(outlier, glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{station}:</span><span class="sc">\n</span><span class="st">{scales::label_percent(accuracy = .1)((late_arrivals + late_departures) / (arrivals + departures))}"</span>), <span class="cn">NA_character_</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">'stress'</span>) <span class="sc">+</span> </span>
@@ -1063,17 +1270,21 @@ We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by a
 <span id="cb11-26"><a href="#cb11-26"></a>  <span class="fu">scale_size</span>(<span class="at">rang =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">15</span>), <span class="at">guide =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb11-27"><a href="#cb11-27"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Stations w/ routes w/ outlier duration"</span>, <span class="at">subtitle =</span> <span class="st">"Labeled stations had destinations with weighted average journey time 2 standard deviations outside the mean"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>, <span class="at">edge_width =</span> <span class="st">"Journey Time (mins)"</span>) <span class="sc">+</span></span>
 <span id="cb11-28"><a href="#cb11-28"></a>  <span class="fu">theme_blog_network</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb11-29"><a href="#cb11-29"></a>l <span class="sc">/</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-29"><a href="#cb11-29"></a>l <span class="sc">/</span> d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Aside from the nice workflow, tidygraph also gives us access to a lot of new functionality and functionality from other network packages (other packages that are tougher to use with data frames imho) including <code>centrality_*</code> functions. There are a number of ways to measure centrality including betweenness, closeness, eigen, etc. Our network has pretty big hubs (i.e.&nbsp;Paris &amp; Lyon Part Dieu) so the central nodes are pretty obvious, but often determining the central nodes is more difficult. Below we used betweenness to measure centrality, which measures the centrality of a node by how many times it is used to create the shortest path to other nodes in the network.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>cb <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>cb <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">mutate</span>(<span class="at">cb =</span> <span class="fu">centrality_betweenness</span>())</span>
 <span id="cb12-3"><a href="#cb12-3"></a>mean_cb <span class="ot">&lt;-</span> <span class="fu">mean</span>(cb <span class="sc">|&gt;</span> <span class="fu">pull</span>(cb))</span>
 <span id="cb12-4"><a href="#cb12-4"></a>sd_cb <span class="ot">&lt;-</span> <span class="fu">sd</span>(cb <span class="sc">|&gt;</span> <span class="fu">pull</span>(cb))</span>
@@ -1086,17 +1297,21 @@ We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by a
 <span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">15</span>), <span class="at">guide =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb12-12"><a href="#cb12-12"></a>  <span class="fu">scale_colour_steps</span>(<span class="at">labels =</span> <span class="cn">NULL</span>, <span class="at">low =</span> <span class="st">"#d9d9d9"</span>, <span class="at">high =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
 <span id="cb12-13"><a href="#cb12-13"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Centrality Betweenness"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>, <span class="at">color =</span> <span class="st">"Centrality"</span>, <span class="at">size =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a>  <span class="fu">theme_blog_network</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="fu">theme_blog_network</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I read a <a href="http://blog.schochastics.net/post/network-centrality-in-r-introduction/">post</a> by David Schoch that inspired me to compare different centrality measures. It seems like a good exploratory way to understand the network and to understand the best centrality measure(s) to use. The eigen measure was particularly interesting for this network, it looks for nodes that benefit from the connections of their nearest neighbors.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>centrality_df <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>centrality_df <span class="ot">&lt;-</span> network_df <span class="sc">%N&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb13-3"><a href="#cb13-3"></a>    <span class="at">cd =</span> tidygraph<span class="sc">::</span><span class="fu">centrality_degree</span>(),</span>
 <span id="cb13-4"><a href="#cb13-4"></a>    <span class="at">cb =</span> <span class="fu">centrality_betweenness</span>(),</span>
@@ -1135,17 +1350,21 @@ We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by a
 <span id="cb13-37"><a href="#cb13-37"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
 <span id="cb13-38"><a href="#cb13-38"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Centrality Measures"</span>, <span class="at">subtitle =</span> <span class="st">"Comparing centrality measures for the stations in the top 5 (including ties)"</span>, <span class="at">fill =</span> <span class="st">"Station"</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Measure"</span>) <span class="sc">+</span></span>
 <span id="cb13-39"><a href="#cb13-39"></a>  <span class="fu">theme_blog</span>() <span class="sc">+</span></span>
-<span id="cb13-40"><a href="#cb13-40"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-40"><a href="#cb13-40"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We can also use the <code>group_*</code> functions to perform community detection, for example <code>group_edge_betweenness()</code>.</p>
 <div class="cell" data-ffmpeg.format="gif" data-animation.hook="gifski">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>group_edge_betweenness_plots <span class="ot">&lt;-</span> <span class="cf">function</span>(tbl_graph, i){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>group_edge_betweenness_plots <span class="ot">&lt;-</span> <span class="cf">function</span>(tbl_graph, i){</span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="co"># This feels very untidy, but names() does not work on tbl_graph objects and I can't find any way to use certain tidy</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="co"># methods (e.g. pivot_longer, map_dfc, etc.)</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>  <span class="co"># pull() is the only programmatic way I can figure out to extract things from my df's once they're in the tbl_graph</span></span>
@@ -1177,10 +1396,14 @@ We can use many (not all) tidyverse functions with a <code>tbl_graph</code> by a
 <span id="cb14-30"><a href="#cb14-30"></a></span>
 <span id="cb14-31"><a href="#cb14-31"></a>network_df <span class="sc">|&gt;</span> </span>
 <span id="cb14-32"><a href="#cb14-32"></a>  <span class="fu">group_edge_betweenness_plots</span>(<span class="at">i =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb14-33"><a href="#cb14-33"></a>  <span class="fu">walk</span>(print) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-33"><a href="#cb14-33"></a>  <span class="fu">walk</span>(print) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/network_clusters_gif-.gif" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/network_clusters_gif-.gif" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1196,9 +1419,9 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <p>In trying to source coordinates for the 59 train stations I stumbled across <a href="https://github.com/keithmcnulty/wikifacts">wikifacts</a>, an R package to query <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a>. Wikidata is a structured data source for Wikipedia, Wikivoyage, Wiktionary, Wikisource, and the many other wiki projects. In other words, it’s a data base you can query to get info from Wikipedia. Who knew! I’m going to cover the basics of wikifacts in a separate post for posterity, but I used it to get coordinates for the stations so we could map the data.</p>
 <p>It wasn’t quite as simple as a query and a join with the data because the names of the stations weren’t quite right in this data set (e.g.&nbsp;station Italie is not a station name). I had to do a little bit of Googling and make a few assumptions, but I think I got the wikidata item ID’s for all the stations. It’s a bit of a round about way to get the data, but it works.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>wikidata_ids <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>wikidata_ids <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="sc">~</span>station, <span class="sc">~</span>wikidata, </span>
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="st">"Aix En Provence Tgv"</span>, <span class="st">"Q800366"</span>, </span>
 <span id="cb15-4"><a href="#cb15-4"></a>  <span class="st">"Angers Saint Laud"</span>, <span class="st">"Q952091"</span>, </span>
@@ -1278,7 +1501,7 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb15-78"><a href="#cb15-78"></a>  <span class="fu">wiki_query</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb15-79"><a href="#cb15-79"></a>  <span class="fu">mutate</span>(<span class="at">wikidata =</span> <span class="fu">str_split</span>(name, <span class="st">"entity/"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb15-80"><a href="#cb15-80"></a>  <span class="fu">mutate</span>(<span class="at">wikidata =</span> <span class="fu">map_chr</span>(wikidata, <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb15-81"><a href="#cb15-81"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-81"><a href="#cb15-81"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1290,9 +1513,9 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 </center>
 <p>We can work with many geometries <code>sf</code>. Most of my experience has been with points and polygons, but given all the time we just spent working tidygraph, we should convert the edges to linestrings. This was my first time working with linestrings and I had a little trouble, but <a href="https://stackoverflow.com/questions/70235896/sf-and-networks-in-r-create-an-edgelist-from-distinct-linestrings-and-points-s">this great answer</a> from lovalery got me through it.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>extract_lonlat <span class="ot">&lt;-</span> <span class="cf">function</span>(point, <span class="at">lon_or_lat =</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat)"</span>)){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>extract_lonlat <span class="ot">&lt;-</span> <span class="cf">function</span>(point, <span class="at">lon_or_lat =</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat)"</span>)){</span>
 <span id="cb16-2"><a href="#cb16-2"></a>  args <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lon"</span>, <span class="st">"lat"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a>  lon_or_lat <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(lon_or_lat, <span class="at">choices =</span> args)</span>
 <span id="cb16-4"><a href="#cb16-4"></a>  index <span class="ot">&lt;-</span> <span class="fu">which</span>(args <span class="sc">==</span> lon_or_lat, <span class="at">arr.ind =</span> F)</span>
@@ -1328,17 +1551,17 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb16-34"><a href="#cb16-34"></a>  <span class="fu">return</span>(df)</span>
 <span id="cb16-35"><a href="#cb16-35"></a>}) <span class="sc">|&gt;</span> </span>
 <span id="cb16-36"><a href="#cb16-36"></a>  <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb16-37"><a href="#cb16-37"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-37"><a href="#cb16-37"></a>  <span class="fu">st_set_crs</span>(<span class="dv">4326</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Creating a map with sf and <a href="https://rstudio.github.io/leaflet/">leaflet</a> is so easy, it’s amazing! We can pass the points and the linestrings or just the points since the routes get really crowded unless we filter to one station maybe… This could be a good idea to build an accompanying table to filter the leaflet nodes to specific stations and all their connections. I’m going to skip that idea for now because I’ve done that before in with plotly and crosstalk in my <a href="https://www.mark-druffel.com/2020/great-american-beer-festival/">Great American Beer Festival post</a>, but I might do it in a separate post later. Note, I had a small hiccup getting the map background to load on my computer that was solved with <a href="https://stackoverflow.com/questions/37812844/package-leaflet-map-doesnt-show">this answer</a> from Wilcar.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">addTiles</span>(<span class="at">attribution =</span> <span class="st">'&amp;copy; &lt;a href="http://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt;'</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> stations_sf) <span class="sc">|&gt;</span>  </span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">addPolylines</span>(<span class="at">data =</span> routes_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">addPolylines</span>(<span class="at">data =</span> routes_sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bd93691f3a3d452c2762" style="width:100%;height:361px;"></div>
@@ -1347,9 +1570,9 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 </div>
 <p>My first thought to look at the linestrings was to use geom_sf to make an arc diagram - I weirdly couldn’t figure out an easy way to do it with sf at first so I just used based ggplot2 and the old fashioned latitude / longitude approach with help from a <a href="https://datascience.blog.wzb.eu/2018/05/31/three-ways-of-visualizing-a-graph-on-a-map/">post by Markus Konrad</a>. This was actually a lot easier than I thought it’d be.</p>
 <div class="cell" data-ffmpeg.format="gif" data-animation.hook="gifski">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>geom_map <span class="ot">&lt;-</span> <span class="fu">borders</span>(<span class="st">"world"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">52</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="dv">18</span>), <span class="at">size =</span> .<span class="dv">04</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>geom_map <span class="ot">&lt;-</span> <span class="fu">borders</span>(<span class="st">"world"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">52</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="dv">18</span>), <span class="at">size =</span> .<span class="dv">04</span>,</span>
 <span id="cb18-2"><a href="#cb18-2"></a>                    <span class="at">fill =</span> <span class="st">"white"</span>)</span>
 <span id="cb18-3"><a href="#cb18-3"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(stations_sf<span class="sc">$</span>id, <span class="cf">function</span>(x){</span>
 <span id="cb18-4"><a href="#cb18-4"></a>  station <span class="ot">&lt;-</span> stations_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(id <span class="sc">==</span> x) <span class="sc">|&gt;</span> <span class="fu">pull</span>(station)</span>
@@ -1372,17 +1595,21 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb18-21"><a href="#cb18-21"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb18-22"><a href="#cb18-22"></a>    <span class="fu">theme</span>(<span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#d7e9f5"</span>, <span class="at">colour=</span><span class="st">"#d7e9f5"</span>))</span>
 <span id="cb18-23"><a href="#cb18-23"></a>})</span>
-<span id="cb18-24"><a href="#cb18-24"></a><span class="fu">walk</span>(plots, print) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-24"><a href="#cb18-24"></a><span class="fu">walk</span>(plots, print) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/arc_map_gif-.gif" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/arc_map_gif-.gif" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I finally got the map above using sf by leveraging another package, <a href="https://luukvdmeer.github.io/sfnetworks/index.html">sfnetworks</a>, which combines sf and tidygraphs. This package is the perfect way to tie our two different threads of network and spatial analysis together.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>network_sf <span class="ot">&lt;-</span> <span class="fu">sfnetwork</span>(stations_sf, routes_df, <span class="at">node_key =</span> <span class="st">"id"</span>, <span class="at">directed =</span> F)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>network_sf <span class="ot">&lt;-</span> <span class="fu">sfnetwork</span>(stations_sf, routes_df, <span class="at">node_key =</span> <span class="st">"id"</span>, <span class="at">directed =</span> F)</span>
 <span id="cb19-2"><a href="#cb19-2"></a>network_sf <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">convert</span>(</span>
 <span id="cb19-3"><a href="#cb19-3"></a>  network_sf, </span>
 <span id="cb19-4"><a href="#cb19-4"></a>  to_spatial_explicit, </span>
@@ -1393,17 +1620,21 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_as_sf</span>(network_sf, <span class="st">"edges"</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb19-10"><a href="#cb19-10"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_as_sf</span>(network_sf, <span class="st">"nodes"</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb19-11"><a href="#cb19-11"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="fu">theme</span>(<span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#d7e9f5"</span>, <span class="at">colour=</span><span class="st">"#d7e9f5"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-12"><a href="#cb19-12"></a>  <span class="fu">theme</span>(<span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#d7e9f5"</span>, <span class="at">colour=</span><span class="st">"#d7e9f5"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>It also provides some really handy functionality like measuring edge length (i.e.&nbsp;distance) because it has both the graph data and the sf data. We can use that for all sorts of analysis including calculating the average speed of the routes (since we already have weighted average trip time), very cool!</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>network_sf <span class="ot">&lt;-</span> network_sf <span class="sc">%E&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>network_sf <span class="ot">&lt;-</span> network_sf <span class="sc">%E&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">edge_length</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">mutate</span>(<span class="at">distance_km =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+</span><span class="sc">\\</span><span class="st">D+$"</span>, <span class="st">""</span>, measurements<span class="sc">::</span><span class="fu">conv_unit</span>(distance, <span class="at">from =</span> <span class="st">"m"</span>, <span class="at">to =</span> <span class="st">"km"</span>)))) <span class="sc">|&gt;</span> </span>
 <span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">mutate</span>(<span class="at">avg_speed_kph =</span> distance_km <span class="sc">/</span> (journey_time_weighted_avg <span class="sc">/</span> <span class="dv">60</span>))</span>
@@ -1414,17 +1645,21 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Route Speeds (kph)"</span>, <span class="at">color =</span> <span class="st">"Avg kph"</span>) <span class="sc">+</span></span>
 <span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">theme</span>(<span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#d7e9f5"</span>, <span class="at">colour=</span><span class="st">"#d7e9f5"</span>),</span>
-<span id="cb20-12"><a href="#cb20-12"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-12"><a href="#cb20-12"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Finally, heavily borrowing from the package vignette, sfnetworks can use tidygraphs <a href="https://tidygraph.data-imaginist.com/reference/morphers.html">morphers</a> to do really neat things like community detection in edges. Here we morph the edges into the nodes place so that we can use Louvain community detection, which can only be done on nodes, and then assign those groups to the edges so we can visualize them.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>grouped_net <span class="ot">=</span> network_sf <span class="sc">%N&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>grouped_net <span class="ot">=</span> network_sf <span class="sc">%N&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">morph</span>(to_linegraph) <span class="sc">|&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">group_louvain</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">unmorph</span>()</span>
@@ -1439,10 +1674,14 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 <span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Louvain method for community detection"</span>, <span class="at">color =</span> <span class="st">"Groups"</span>) <span class="sc">+</span></span>
 <span id="cb21-14"><a href="#cb21-14"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb21-15"><a href="#cb21-15"></a>  <span class="fu">theme</span>(<span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#d7e9f5"</span>, <span class="at">colour=</span><span class="st">"#d7e9f5"</span>),</span>
-<span id="cb21-16"><a href="#cb21-16"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-16"><a href="#cb21-16"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1468,158 +1707,71 @@ After plotting our network and seeing Stuttgart on the left and Barcelona on the
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1627,264 +1779,437 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+            window.location.href = sourceUrl;
           }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
       });
     }
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/www\.mark-druffel\.com");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-});
-</script>
-<script src="https://giscus.app/client.js" data-repo="mark-druffel/www.mark-druffel.com" data-repo-id="R_kgDOIlYeNg" data-category="Blog" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.mark-druffel\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "mark-druffel/www.mark-druffel.com";
+    script.dataset.repoId = "R_kgDOIlYeNg";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOIlYeNs4CfXYl";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">---</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="an">title:</span><span class="co"> "French Train Delays"</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="an">subtitle:</span><span class="co"> "Tidy Tuesday analysis of the TGV high-speed rail service from 2015 to 2018."</span></span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="an">author:</span><span class="co"> "Mark Druffel"</span></span>
@@ -1909,21 +2234,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-23"><a href="#cb22-23"></a><span class="in">```{css, echo = F}</span></span>
 <span id="cb22-24"><a href="#cb22-24"></a><span class="co">/* kableExtra tables &amp; skimr */</span></span>
 <span id="cb22-25"><a href="#cb22-25"></a>table <span class="op">{</span></span>
-<span id="cb22-26"><a href="#cb22-26"></a>   font<span class="op">-</span>size<span class="op">:</span> 12px<span class="op">;</span></span>
-<span id="cb22-27"><a href="#cb22-27"></a>   width<span class="op">:</span> 850px<span class="op">;</span></span>
+<span id="cb22-26"><a href="#cb22-26"></a>   font<span class="op">-</span>size<span class="op">:</span> <span class="dv">12</span>px<span class="op">;</span></span>
+<span id="cb22-27"><a href="#cb22-27"></a>   width<span class="op">:</span> <span class="dv">850</span>px<span class="op">;</span></span>
 <span id="cb22-28"><a href="#cb22-28"></a>   margin<span class="op">:</span> auto<span class="op">;</span> </span>
-<span id="cb22-29"><a href="#cb22-29"></a>   border<span class="op">-</span>top<span class="op">:</span> 1px solid #<span class="dv">666</span><span class="op">;</span> </span>
-<span id="cb22-30"><a href="#cb22-30"></a>   border<span class="op">-</span>bottom<span class="op">:</span> 1px solid #<span class="dv">666</span><span class="op">;</span> </span>
+<span id="cb22-29"><a href="#cb22-29"></a>   border<span class="op">-</span>top<span class="op">:</span> <span class="dv">1</span>px solid #<span class="dv">666</span><span class="op">;</span> </span>
+<span id="cb22-30"><a href="#cb22-30"></a>   border<span class="op">-</span>bottom<span class="op">:</span> <span class="dv">1</span>px solid #<span class="dv">666</span><span class="op">;</span> </span>
 <span id="cb22-31"><a href="#cb22-31"></a><span class="op">}</span></span>
 <span id="cb22-32"><a href="#cb22-32"></a>table thead th <span class="op">{</span> </span>
-<span id="cb22-33"><a href="#cb22-33"></a>  font<span class="op">-</span>size<span class="op">:</span> 14px<span class="op">;</span></span>
-<span id="cb22-34"><a href="#cb22-34"></a>  border<span class="op">-</span>bottom<span class="op">:</span> 1px solid #ddd<span class="op">;</span> </span>
+<span id="cb22-33"><a href="#cb22-33"></a>  font<span class="op">-</span>size<span class="op">:</span> <span class="dv">14</span>px<span class="op">;</span></span>
+<span id="cb22-34"><a href="#cb22-34"></a>  border<span class="op">-</span>bottom<span class="op">:</span> <span class="dv">1</span>px solid #ddd<span class="op">;</span> </span>
 <span id="cb22-35"><a href="#cb22-35"></a><span class="op">}</span></span>
 <span id="cb22-36"><a href="#cb22-36"></a>th<span class="op">,</span> td <span class="op">{</span> </span>
-<span id="cb22-37"><a href="#cb22-37"></a>  padding<span class="op">-</span>top<span class="op">:</span> 1px<span class="op">;</span></span>
-<span id="cb22-38"><a href="#cb22-38"></a>  padding<span class="op">-</span>bottom<span class="op">:</span> 1px<span class="op">;</span></span>
-<span id="cb22-39"><a href="#cb22-39"></a>  padding<span class="op">-</span>left<span class="op">:</span> 3px<span class="op">;</span></span>
-<span id="cb22-40"><a href="#cb22-40"></a>  padding<span class="op">-</span>right<span class="op">:</span> 3px<span class="op">;</span></span>
+<span id="cb22-37"><a href="#cb22-37"></a>  padding<span class="op">-</span>top<span class="op">:</span> <span class="dv">1</span>px<span class="op">;</span></span>
+<span id="cb22-38"><a href="#cb22-38"></a>  padding<span class="op">-</span>bottom<span class="op">:</span> <span class="dv">1</span>px<span class="op">;</span></span>
+<span id="cb22-39"><a href="#cb22-39"></a>  padding<span class="op">-</span>left<span class="op">:</span> <span class="dv">3</span>px<span class="op">;</span></span>
+<span id="cb22-40"><a href="#cb22-40"></a>  padding<span class="op">-</span>right<span class="op">:</span> <span class="dv">3</span>px<span class="op">;</span></span>
 <span id="cb22-41"><a href="#cb22-41"></a><span class="op">}</span></span>
 <span id="cb22-42"><a href="#cb22-42"></a>tr<span class="op">:</span>hover <span class="op">{</span></span>
 <span id="cb22-43"><a href="#cb22-43"></a>  background<span class="op">-</span>color<span class="op">:</span> #F8F8F8<span class="op">;</span></span>
@@ -2085,11 +2410,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-199"><a href="#cb22-199"></a><span class="in">```</span></span>
 <span id="cb22-200"><a href="#cb22-200"></a></span>
 <span id="cb22-201"><a href="#cb22-201"></a><span class="fu">### Networking   </span></span>
-<span id="cb22-202"><a href="#cb22-202"></a>No fear, I'm not talking about a cringy coffee date with a complete stranger, I'm talking about math networks (i.e. graphs). Viewing our data in a network will provide a lot of context we can't get from other plotting methods. The <span class="co">[</span><span class="ot">tidygraph</span><span class="co">](https://tidygraph.data-imaginist.com/)</span> package makes it fairly easy to work with network graphs and the <span class="co">[</span><span class="ot">ggraph</span><span class="co">](https://ggraph.data-imaginist.com/)</span> package provides ggplot2 with graphing grammar of graphics (wow that sounds confusing :joy:). These packages (and network analysis in general) are incredibly robust so there is a bit of a learning curve, I've noted some other materials I've found helpful getting started. <span class="ot">[^1]</span>  </span>
+<span id="cb22-202"><a href="#cb22-202"></a>No fear, I'm not talking about a cringy coffee date with a complete stranger, I'm talking about math networks (i.e. graphs). Viewing our data in a network will provide a lot of context we can't get from other plotting methods. The <span class="co">[</span><span class="ot">tidygraph</span><span class="co">](https://tidygraph.data-imaginist.com/)</span> package makes it fairly easy to work with network graphs and the <span class="co">[</span><span class="ot">ggraph</span><span class="co">](https://ggraph.data-imaginist.com/)</span> package provides ggplot2 with graphing grammar of graphics (wow that sounds confusing <span class="sc">:joy:</span>). These packages (and network analysis in general) are incredibly robust so there is a bit of a learning curve, I've noted some other materials I've found helpful getting started. <span class="ot">[^1]</span>  </span>
 <span id="cb22-203"><a href="#cb22-203"></a></span>
-<span id="cb22-204"><a href="#cb22-204"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb22-204"><a href="#cb22-204"></a><span class="dt">&lt;</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-205"><a href="#cb22-205"></a><span class="al">![](https://media.giphy.com/media/RLPaiMQnclf7HNnrtE/giphy.gif)</span>{width=450px}</span>
-<span id="cb22-206"><a href="#cb22-206"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb22-206"><a href="#cb22-206"></a><span class="dt">&lt;/</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-207"><a href="#cb22-207"></a></span>
 <span id="cb22-208"><a href="#cb22-208"></a>The short of it, tidygraph allows us to perform network analysis in data frames so we still take advantage of our the tidy workflow even though <span class="co">[</span><span class="ot">graph objects</span><span class="co">](https://en.wikipedia.org/wiki/Graph_theory)</span> aren't rectangular in nature.  To create a graph object, we have to create a nodes list (points in the network) and an edges list (connections between nodes). We can store our nodes list as a data frame with a record for each node in the network, in this case train stations, and any attributes related to the nodes. We can store our edges list as a data frame with a record for each connection in the network, in this case legs, and any attributes related to the edges. All graph objects are either directed or un-directed - this graph is un-directed because the trains go in both directions so the edges do not represent a direction. Once we have a node list and edge list, we can transform the data frames into a <span class="in">`tbl_graph`</span>.</span>
 <span id="cb22-211"><a href="#cb22-211"></a><span class="in">```{r}</span></span>
@@ -2132,9 +2457,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-248"><a href="#cb22-248"></a>  <span class="fu">select</span>(<span class="sc">-</span>id)</span>
 <span id="cb22-249"><a href="#cb22-249"></a>network_df <span class="ot">&lt;-</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> stations_df, <span class="at">edges =</span> routes_df, <span class="at">directed =</span> F)</span>
 <span id="cb22-250"><a href="#cb22-250"></a><span class="in">```</span></span>
-<span id="cb22-251"><a href="#cb22-251"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb22-251"><a href="#cb22-251"></a><span class="dt">&lt;</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-252"><a href="#cb22-252"></a><span class="al">![](https://media.giphy.com/media/7c0bE2bfJrfos/giphy.gif)</span>{width=450px}  </span>
-<span id="cb22-253"><a href="#cb22-253"></a><span class="kw">&lt;/center&gt;</span> </span>
+<span id="cb22-253"><a href="#cb22-253"></a><span class="dt">&lt;/</span><span class="kw">center</span><span class="dt">&gt;</span> </span>
 <span id="cb22-254"><a href="#cb22-254"></a>With the <span class="in">`tbl_graph`</span>, we can take advantage of ggraph to visualize our data. There is an <span class="in">`autograph()`</span> function to quickly visualize your network automagically, but I'll spell it out as well with <span class="in">`ggraph()`</span>. Layout determines the position of the nodes and edges (more on that in a minute), we can start with <span class="in">`layout='auto'`</span>. Then we use the typical ggplot flow but there are new geoms to pay attention to, primarily  <span class="in">`geom_node_point()`</span> and <span class="in">`geom_edge_link()`</span>, these are very basic geoms to visualize the nodes and edges of the graph. Visualizing the data as a network has immediate benefits, this visual shows there are several major hubs that most legs connect through which wasn't clearly discernible from our other plots. </span>
 <span id="cb22-255"><a href="#cb22-255"></a></span>
 <span id="cb22-258"><a href="#cb22-258"></a><span class="in">```{r}</span></span>
@@ -2150,7 +2475,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-268"><a href="#cb22-268"></a>auto <span class="sc">+</span> verbose</span>
 <span id="cb22-269"><a href="#cb22-269"></a><span class="in">```</span></span>
 <span id="cb22-270"><a href="#cb22-270"></a></span>
-<span id="cb22-271"><a href="#cb22-271"></a>Regarding layout, ggraph provides a number of layouts from igraph <span class="ot">[^2]</span> and graphlayouts <span class="ot">[^3]</span>, with option to create your own. The ggraph function defaults to <span class="in">`layout='auto'`</span>, which seems to do a pretty good job selecting a layout in my novice experience, but it's recommended that a layout is intentionally chosen for the graph. All the layout choices can be overwhelming, but it's pretty easy to visually narrow down choices and then do a bit of research to understand the differences between those options. <span class="ot">[^4]</span> Many of the algorithms are non-deterministic meaning you'll get different results when re-running, which makes selecting the best layout all the more challenging. I saw a cool <span class="co">[</span><span class="ot">example</span><span class="co">](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/)</span> by Thomas Lin Pederson where he showed the different layouts in a neat animation using <span class="co">[</span><span class="ot">tweenr</span><span class="co">](https://github.com/thomasp85/tweenr)</span>. I tried that here, more for fun, to see the different layouts and mess with tweenr. I decided to go with <span class="in">`layout='stress'`</span> because it seemed to produce the least overlap for both nodes and edges making it the easiest to read - funnily enough the same layout <span class="in">`layout='auto'`</span> chose :joy:</span>
+<span id="cb22-271"><a href="#cb22-271"></a>Regarding layout, ggraph provides a number of layouts from igraph <span class="ot">[^2]</span> and graphlayouts <span class="ot">[^3]</span>, with option to create your own. The ggraph function defaults to <span class="in">`layout='auto'`</span>, which seems to do a pretty good job selecting a layout in my novice experience, but it's recommended that a layout is intentionally chosen for the graph. All the layout choices can be overwhelming, but it's pretty easy to visually narrow down choices and then do a bit of research to understand the differences between those options. <span class="ot">[^4]</span> Many of the algorithms are non-deterministic meaning you'll get different results when re-running, which makes selecting the best layout all the more challenging. I saw a cool <span class="co">[</span><span class="ot">example</span><span class="co">](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/)</span> by Thomas Lin Pederson where he showed the different layouts in a neat animation using <span class="co">[</span><span class="ot">tweenr</span><span class="co">](https://github.com/thomasp85/tweenr)</span>. I tried that here, more for fun, to see the different layouts and mess with tweenr. I decided to go with <span class="in">`layout='stress'`</span> because it seemed to produce the least overlap for both nodes and edges making it the easiest to read - funnily enough the same layout <span class="in">`layout='auto'`</span> chose <span class="sc">:joy:</span></span>
 <span id="cb22-272"><a href="#cb22-272"></a></span>
 <span id="cb22-273"><a href="#cb22-273"></a><span class="in">```{r network_layouts_gif, fig.show='animate', ffmpeg.format='gif', dev='png'}</span></span>
 <span id="cb22-274"><a href="#cb22-274"></a>layout_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'star'</span>, <span class="st">'circle'</span>, <span class="st">'gem'</span>, <span class="st">'dh'</span>, <span class="st">'graphopt'</span>, <span class="st">'grid'</span>, <span class="st">'mds'</span>, <span class="st">'randomly'</span>, <span class="st">'fr'</span>, <span class="st">'kk'</span>, <span class="st">'drl'</span>, <span class="st">'lgl'</span>, <span class="st">'stress'</span>)</span>
@@ -2180,9 +2505,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-298"><a href="#cb22-298"></a><span class="in">```</span></span>
 <span id="cb22-299"><a href="#cb22-299"></a></span>
 <span id="cb22-300"><a href="#cb22-300"></a>We can use many (not all) tidyverse functions with a <span class="in">`tbl_graph`</span> by activating the nodes or edges and using the verb of choice (e.g. <span class="in">`mutate()`</span>, <span class="in">`filter()`</span>, <span class="in">`morph()`</span> etc.). The <span class="in">`activate()`</span> function can be called directly or as pipeline operators <span class="in">`%N&gt;%`</span> and <span class="in">`%E&gt;%`</span>, which active nodes and edge respectively. I ran into some challenges in this post that I won't spell out for brevity, but know functions like <span class="in">`pivot_longer()`</span> and <span class="in">`unnest()`</span> aren't available with <span class="in">`tbl_graph`</span> objects. I ended up writing a lot of clumsy code with <span class="in">`pull()`</span>. There may be better approaches, but I wasn't finding much on Stackoverflow or Github. I'll post some questions later and link them in here if I can get some answers.  </span>
-<span id="cb22-301"><a href="#cb22-301"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb22-301"><a href="#cb22-301"></a><span class="dt">&lt;</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-302"><a href="#cb22-302"></a><span class="al">![](https://media.giphy.com/media/M3eK8qCLFeZ5m/giphy.gif)</span>{width=450px}</span>
-<span id="cb22-303"><a href="#cb22-303"></a><span class="kw">&lt;/center&gt;</span> </span>
+<span id="cb22-303"><a href="#cb22-303"></a><span class="dt">&lt;/</span><span class="kw">center</span><span class="dt">&gt;</span> </span>
 <span id="cb22-304"><a href="#cb22-304"></a></span>
 <span id="cb22-305"><a href="#cb22-305"></a>With dplyr verbs, we can calculate attributes on our nodes &amp; edges to add to our visuals.  </span>
 <span id="cb22-306"><a href="#cb22-306"></a><span class="in">```{r, fig.height = 10}</span></span>
@@ -2318,9 +2643,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-440"><a href="#cb22-440"></a></span>
 <span id="cb22-441"><a href="#cb22-441"></a><span class="fu">### Geospatial  </span></span>
 <span id="cb22-442"><a href="#cb22-442"></a>After plotting our network and seeing Stuttgart on the left and Barcelona on the right, I really wanted to source coordinates and map the train network. The dataset didn't come with coordinates, but I thought maybe I could source them - this was a total can of worms called Wikidata.  </span>
-<span id="cb22-443"><a href="#cb22-443"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb22-443"><a href="#cb22-443"></a><span class="dt">&lt;</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-444"><a href="#cb22-444"></a><span class="al">![](https://media.giphy.com/media/UVdiMrmmwTWDcN2dZ5/giphy.gif)</span>{width=450px}  </span>
-<span id="cb22-445"><a href="#cb22-445"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb22-445"><a href="#cb22-445"></a><span class="dt">&lt;/</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-446"><a href="#cb22-446"></a></span>
 <span id="cb22-447"><a href="#cb22-447"></a><span class="fu">#### Wikidata  </span></span>
 <span id="cb22-448"><a href="#cb22-448"></a>In trying to source coordinates for the 59 train stations I stumbled across <span class="co">[</span><span class="ot">wikifacts</span><span class="co">](https://github.com/keithmcnulty/wikifacts)</span>, an R package to query <span class="co">[</span><span class="ot">Wikidata</span><span class="co">](https://www.wikidata.org/wiki/Wikidata:Main_Page)</span>. Wikidata is a structured data source for Wikipedia, Wikivoyage, Wiktionary, Wikisource, and the many other wiki projects. In other words, it's a data base you can query to get info from Wikipedia. Who knew! I'm going to cover the basics of wikifacts in a separate post for posterity, but I used it to get coordinates for the stations so we could map the data.  </span>
@@ -2413,9 +2738,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-537"><a href="#cb22-537"></a><span class="fu">#### sf  </span></span>
 <span id="cb22-538"><a href="#cb22-538"></a>Not the city, the R package <span class="co">[</span><span class="ot">sf</span><span class="co">](https://r-spatial.github.io/sf/)</span>. It stands for simple features, a set of standards that specify a common storage and access model of geographic feature made of mostly two-dimensional geometries. <span class="ot">[^5]</span> The sf package is the tidygraph of geospatial analytics in R (or vice versa, I think sf might be older).   </span>
 <span id="cb22-539"><a href="#cb22-539"></a></span>
-<span id="cb22-540"><a href="#cb22-540"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb22-540"><a href="#cb22-540"></a><span class="dt">&lt;</span><span class="kw">center</span><span class="dt">&gt;</span></span>
 <span id="cb22-541"><a href="#cb22-541"></a><span class="al">![](https://media.giphy.com/media/26DNdV3b6dqn1jzR6/giphy.gif)</span>{width=450px}  </span>
-<span id="cb22-542"><a href="#cb22-542"></a><span class="kw">&lt;/center&gt;</span>  </span>
+<span id="cb22-542"><a href="#cb22-542"></a><span class="dt">&lt;/</span><span class="kw">center</span><span class="dt">&gt;</span>  </span>
 <span id="cb22-543"><a href="#cb22-543"></a></span>
 <span id="cb22-544"><a href="#cb22-544"></a>We can work with many geometries <span class="in">`sf`</span>. Most of my experience has been with points and polygons, but given all the time we just spent working tidygraph, we should convert the edges to linestrings. This was my first time working with linestrings and I had a little trouble, but <span class="co">[</span><span class="ot">this great answer</span><span class="co">](https://stackoverflow.com/questions/70235896/sf-and-networks-in-r-create-an-edgelist-from-distinct-linestrings-and-points-s)</span> from lovalery got me through it. </span>
 <span id="cb22-547"><a href="#cb22-547"></a><span class="in">```{r}</span></span>
@@ -2555,7 +2880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-683"><a href="#cb22-683"></a><span class="ot">[^3]: </span>The <span class="co">[</span><span class="ot">graphlayouts Package</span><span class="co">](http://graphlayouts.schochastics.net/)</span> provides provides detailed explanations, parameters, etc. for all the graphlayout functions. </span>
 <span id="cb22-684"><a href="#cb22-684"></a><span class="ot">[^4]: </span><span class="co">[</span><span class="ot">Introduction to layouts</span><span class="co">](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/)</span> by Thomas Lin Pederson  was a simple primer on layouts, <span class="co">[</span><span class="ot">Metwork Analysis: Layout of Nodes</span><span class="co">](https://robwiederstein.github.io/network_analysis/igraph.html#layout-of-nodes)</span> by Robert Wiederstein covered a bit more using igraph, and <span class="co">[</span><span class="ot">Stress based graph layouts</span><span class="co">](http://blog.schochastics.net/post/stress-based-graph-layouts/)</span> by David Schoch provided additional insights. </span>
 <span id="cb22-685"><a href="#cb22-685"></a><span class="ot">[5^]: </span><span class="co">[</span><span class="ot">Simple features Wikipedia page </span><span class="co">](https://en.wikipedia.org/wiki/Simple_Features)</span> </span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -2563,12 +2888,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
